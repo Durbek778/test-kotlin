@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--3st card -->
+    <LinearLayout
+        android:id="@+id/bt_video3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_weight="0.4">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/openheimer" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:alpha="0.9"
+                android:src="@drawable/ic_baseline_play_arrow"
+                android:theme="@style/ClickableView" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:padding="0dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="Name: 오펜하이머"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:text="Description: 제2차 세계대전 중 맨해튼 프로젝트를 도운 뛰어난 물리학자. 도덕성과 야망으로 고심하던 그는 파괴적인 힘으로 역사를 영원히 바꿔가며 원자폭탄의 개발을 주도합니다."
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--4st card -->
+    <LinearLayout
+        android:id="@+id/bt_video4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_weight="0.4">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/napoleon" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:alpha="0.9"
+                android:src="@drawable/ic_baseline_play_arrow"
+                android:theme="@style/ClickableView" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:padding="0dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="Name: 나폴레옹"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:text="Description: 야망과 사랑에 힘입어 나폴레옹은 전쟁의 장관 속에서 유럽을 정복합니다. 그러나 끝없는 권력 추구는 극적인 몰락을 초래하며, 역사의 가장 상징적인 인물로 기억됩니다."
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

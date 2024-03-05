@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="1"
+        android:paddingLeft="16dp"
+        android:paddingTop="36dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="36dp"
+        android:rowCount="2"
+
+        >
+
+        <!-- Top card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            app:cardBackgroundColor="@color/bg_primary"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:id="@+id/navigation_to_ProfileEditAcv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <!--left top -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/profile_img"
+                        app:shapeAppearanceOverlay="@style/circular"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="2dp" />
+
+                </LinearLayout>
+
+                <!--                체온, 혈당, 혈압-->
+                <!--right top -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginRight="16dp"
+                            android:src="@drawable/heart_icon" />
+
+                        <TextView
+                            android:id="@+id/pulse_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="체온: 0C "
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="24dp"
+                            android:layout_marginRight="16dp"
+                            android:src="@drawable/pills_icon" />
+
+                        <TextView
+                            android:id="@+id/pills_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="혈당: 0mg/dL"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginRight="16dp"
+                            android:src="@drawable/infusion_icon" />
+
+                        <TextView
+                            android:id="@+id/infusion_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="혈압: 0"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Bottom card -->
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_rowWeight="3"
+            android:padding="36dp"
+            app:cardBackgroundColor="@color/bg_primary"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp">
+
+                <LinearLayout
+                    android:id="@+id/navigation_to_game"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/game_img"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="게임"
+                        android:textColor="@android:color/white"
+                        android:textSize="50sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/navigation_to_artAct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/art_img"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="예술활동"
+                        android:textColor="@android:color/white"
+                        android:textSize="50sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/navigation_to_mediaAct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/media_img"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="미디어시청"
+                        android:textColor="@android:color/white"
+                        android:textSize="50sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </GridLayout>
+
+</RelativeLayout>

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileEditActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="1"
+        android:rowCount="2"
+        android:paddingTop="36dp"
+        android:paddingBottom="36dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내 정보"
+            android:textSize="20sp"
+            android:textColor="@android:color/black" />
+
+        <!-- Top card -->
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_rowWeight="4"
+            app:cardBackgroundColor="@color/bg_primary"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <!--                image -->
+                <LinearLayout
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="0dp"
+                    android:gravity="center">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="2dp"
+                        app:shapeAppearanceOverlay="@style/circular"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/profile_img" />
+
+                </LinearLayout>
+
+                <!--               pation information -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8px"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:text="환자정보 및 상태"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:weightSum="100"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:text="이름"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="30"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/patient_name"
+                            android:text="Patient"
+                            android:textColor="@color/black"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="70"
+                            android:textAlignment="center"
+                            android:background="@drawable/rounded_background"
+
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:weightSum="100"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:text="심박"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="30"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/heard_rate"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="70"
+                            android:textAlignment="center"
+                            android:background="@drawable/rounded_background"
+
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:weightSum="100"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:text="혈압"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="30"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/blood_pressure"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="70"
+                            android:textAlignment="center"
+                            android:background="@drawable/rounded_background"
+
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--               items and medications -->
+                <LinearLayout
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:id="@+id/navigation_to_mediaAct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:weightSum="100"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center">
+
+                    <!--                    left side -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="50"
+                        android:gravity="center">
+
+                        <TextView
+                            android:text="검사예정 항목"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="100"
+                            android:layout_marginTop="16dp"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:layout_weight="1"
+                            android:gravity="center"
+
+                            android:layout_marginBottom="16dp">
+
+                            <TextView
+                                android:id="@+id/items_inspected"
+                                android:text=""
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:layout_weight="90"
+                                android:layout_height="60dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/rounded_background" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--                    right side -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+                        android:layout_weight="50"
+                        android:gravity="center">
+
+                        <TextView
+                            android:text="복용중인 약"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="100"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:layout_weight="1"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+
+                            android:layout_marginBottom="16dp">
+
+                            <TextView
+                                android:id="@+id/madication_onhand"
+                                android:text=""
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:layout_weight="90"
+                                android:layout_height="60dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/rounded_background"
+                                android:breakStrategy="simple" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--               resent diagnostic findings -->
+                <LinearLayout
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:weightSum="130"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="50"
+                        android:gravity="center">
+
+                        <TextView
+                            android:text="최근 진단 소견"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="100"
+                            android:layout_marginTop="16dp"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_marginBottom="16dp">
+
+                            <ScrollView
+                                android:layout_width="0dp"
+                                android:layout_height="100dp"
+                                android:layout_weight="95">
+
+                                <TextView
+                                    android:id="@+id/diagnostic_findings"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp"
+                                    android:background="@drawable/rounded_background" />
+                            </ScrollView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+</RelativeLayout>
+
+
+    <!--    [검사예정 항목]-->
+    <!--    혈당검사, 심전도(EKG), 소변검사-->
+
+    <!--    [복용중인 약]-->
+    <!--    항우울제, 스타틴, 메트포르민-->
+
+    <!--    [최근 진단 소견]-->
+    <!--    이 환자는 고령에도 불구하고 제2형 당뇨병을 비교적 잘 관리하고있습니다.
+    HbA1c (헤모글로빈)수치는 환자가 현재의 약물 치료 계획에 잘 반응 하고 있음을 보여줍니다.
+     그러나 혈당 수준을 더욱 회적화하기위한 노력이 필요합니다.
+    식단과 신체활동 조정 및 장기적인 모니터링이 필요합니다.-->
+    <!--    앞으로도 혈압과 심혈관 위험요소들을 지속적으로 관리하는 것이 중요하겠습니다.-->
+
+
+    <!--    =====제2형 당뇨병 노인환자대상으로 작성 했습니다! -->
+

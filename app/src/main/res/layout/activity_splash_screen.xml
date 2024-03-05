@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_splashScr"
+    android:gravity="center"
+    tools:context=".SplashScreen">
+
+    <ImageView
+        android:layout_width="500dp"
+        android:layout_height="700dp"
+        android:src="@drawable/splash_img_nobg"
+        android:contentDescription="string"/>
+
+
+
+
+</RelativeLayout>
