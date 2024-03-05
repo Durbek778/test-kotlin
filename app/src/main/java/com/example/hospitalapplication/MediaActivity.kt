@@ -1,6 +1,7 @@
 package com.example.hospitalapplication
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
@@ -24,25 +25,30 @@ class MediaActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val media = supabase.getMedia()
             mediaADapter = MediaAdapter(media) { media: Media ->
-                Log.d("TAG", "onCreate:" + media.media_img_src )
+                Log.d("TAG", "onCreate:" + media.mediasrc )
+                openVideoUrl(media.mediasrc)
             }
             binding.recyclerMediarc.adapter = mediaADapter
         }
 
-        /*        val bt_video1 = findViewById<LinearLayout>(R.id.bt_video1)
-                val bt_video2 = findViewById<LinearLayout>(R.id.bt_video2)
-                val bt_video3 = findViewById<LinearLayout>(R.id.bt_video3)
-        //        val bt_video4 = findViewById<LinearLayout>(R.id.bt_video4)
 
-                bt_video1.setOnClickListener { playVideo(R.raw.videoplayback) }
-                bt_video2.setOnClickListener { playVideo(R.raw.videoplayback) }
-                bt_video3.setOnClickListener { playVideo(R.raw.videoplayback) }
-        //        bt_video4.setOnClickListener { playVideo(R.raw.video_napaleon) }*/
     }
 
     private fun playVideo(resourceId: Int) {
         val intent = Intent(this, WatchActivity::class.java)
         intent.putExtra(WatchActivity.EXTRA_VIDEO_RESOURCE_ID, resourceId)
         startActivity(intent)
+    }
+    private fun openVideoUrl(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(url)
+            // Uncomment the following line if you specifically want to open the URL in a web browser
+            // category = Intent.CATEGORY_BROWSABLE
+        }
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        } else {
+            Log.d("TAG", "No Intent available to handle action")
+        }
     }
 }
