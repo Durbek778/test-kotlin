@@ -2,29 +2,42 @@ package com.example.hospitalapplication
 
 import android.content.Context
 import android.content.Intent
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ScrollView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.example.hospitalapplication.adapters.ImageAdapter
 import com.example.hospitalapplication.databinding.ActivityArtDetailedBinding
 import com.example.hospitalapplication.models.ImageItem
-import java.io.Serializable
+import kotlinx.coroutines.launch
+import java.net.URL
 import java.util.*
-import kotlin.collections.ArrayList
 
 class ArtDetailedActivity : AppCompatActivity() {
     private lateinit var viewpager2: ViewPager2
     private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
     private lateinit var binding:ActivityArtDetailedBinding
+    private lateinit var art: Art
+    var imageList =  arrayListOf<ImageItem>(
+        ImageItem(
+            UUID.randomUUID().toString(),
+            URL("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fplaceholder-image&psig=AOvVaw0E73zrybCavsFng-KCV22-&ust=1709975136057000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCIjdmPan5IQDFQAAAAAdAAAAABAE")
+        ),
+        ImageItem(
+            UUID.randomUUID().toString(),
+            URL("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fplaceholder-image&psig=AOvVaw0E73zrybCavsFng-KCV22-&ust=1709975136057000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCIjdmPan5IQDFQAAAAAdAAAAABAE")
+        ),
+        ImageItem(
+            UUID.randomUUID().toString(),
+            URL("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fplaceholder-image&psig=AOvVaw0E73zrybCavsFng-KCV22-&ust=1709975136057000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCIjdmPan5IQDFQAAAAAdAAAAABAE")
+        ),
 
+        )
     private val autoScrollHandler = Handler()
     private val autoScrollRunnable = object : Runnable {
         override fun run() {
@@ -35,34 +48,23 @@ class ArtDetailedActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun newInstance(context: Context, text:String): Intent {
+        fun newInstance(context: Context, art: Art): Intent {
             return Intent(context, ArtDetailedActivity::class.java).apply {
-                putExtra(ART_EXTRA, text)
+                putExtra(ART_EXTRA, art.description)
+                putExtra(ART_IMAGE_ID, art.artid.toString())
+
+
             }
         }
 
         private const val ART_EXTRA = "modelArt"
+        private const val ART_IMAGE_ID= "imageId"
+
         const val AUTO_SCROLL_INTERVAL =
             2500L // Auto-scroll interval in milliseconds (adjust as needed)
     }
 
 
-    val imageList =
-        arrayListOf(
-            ImageItem(
-                UUID.randomUUID().toString(),
-                R.drawable.korean_art
-            ),
-            ImageItem(
-                UUID.randomUUID().toString(),
-                R.drawable.korean_art
-            ),
-            ImageItem(
-                UUID.randomUUID().toString(),
-                R.drawable.korean_art
-            ),
-
-            )
 
     override fun onResume() {
         super.onResume()
@@ -91,6 +93,22 @@ class ArtDetailedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        lifecycleScope.launch {
+            val artid = intent.extras?.getString(ART_IMAGE_ID)
+             art = supabase.getArtById(artid.toString())[0]
+            val imageCount = art.artimage.size
+            for (i in 0 until imageList.size.coerceAtMost(imageCount)) {
+                    var existingImage = imageList[i]
+                    Log.e("IMAGE URL", i.toString())
+                    Log.e("IMAGE URL", URL(art.artimage[i].imagesrc).toString())
+                    existingImage.url = URL(art.artimage[i].imagesrc)
+                    existingImage.url = URL(art.artimage[i].imagesrc)
+
+            }
+            viewpager2.adapter?.notifyDataSetChanged()
+        }
+
         binding= ActivityArtDetailedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val description = intent.extras?.getString(ART_EXTRA)

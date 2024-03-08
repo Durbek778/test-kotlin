@@ -26,7 +26,6 @@ class ImageAdapter : ListAdapter<ImageItem, ImageAdapter.ViewHolder>(DiffCallbac
 
     class ViewHolder(iteView: View) : RecyclerView.ViewHolder(iteView) {
         private val imageView = iteView.findViewById<ImageView>(R.id.imageView)
-
         fun bindData(item: ImageItem) {
             Glide.with(itemView)
                 .load(item.url)

@@ -1,8 +1,6 @@
 package com.example.hospitalapplication
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.hospitalapplication.adapters.ArtAdapter
@@ -12,6 +10,7 @@ import kotlinx.coroutines.launch
 class ArtActivity : AppCompatActivity() {
     private lateinit var binding: ActivityArtBinding
     private lateinit var rcAdapter:ArtAdapter
+     lateinit var arts:List<Art>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityArtBinding.inflate(layoutInflater)
@@ -19,11 +18,12 @@ class ArtActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         lifecycleScope.launch {
-            val arts = supabase.getArts()
-            rcAdapter=ArtAdapter(arts) { art: Art ->
-                startActivity(ArtDetailedActivity.newInstance(this@ArtActivity,art.description))
+             arts = supabase.getArts()
+             rcAdapter=ArtAdapter(arts) { art: Art ->
+                startActivity(ArtDetailedActivity.newInstance(this@ArtActivity,art))
             }
             binding.recyclerArt.adapter =rcAdapter
+
         }
 /*
 

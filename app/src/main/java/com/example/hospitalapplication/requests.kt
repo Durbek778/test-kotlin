@@ -118,6 +118,22 @@ class Requests {
         return data;
 
     }
+    public suspend fun getArtById(artid: String): List<Art> {
+        val supabase = getClient()
+        val supabaseResponse =
+            supabase.postgrest.from("art")
+                .select(Columns.raw("artid,name,description,artimage(artid,imagesrc)")){
+                    filter {
+                        Art::artid eq artid
+                        //or
+                        eq("artid", artid)
+                    }
+                }
+        val data = supabaseResponse.decodeList<Art>()
+        Log.e("supabase", data.toString())
+        return data;
+
+    }
 
     public suspend fun getGames(): List<Game> {
         val supabase = getClient()

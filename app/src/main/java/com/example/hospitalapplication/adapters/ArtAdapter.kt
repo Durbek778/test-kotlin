@@ -12,7 +12,7 @@ class ArtAdapter(private val list: List<Art>, val onClick: (Art) -> Unit) :
     inner class VH(val itemArtRcBinding: ItemArtRcBinding) :
         RecyclerView.ViewHolder(itemArtRcBinding.root) {
         fun viewBuild(art: Art) {
-            Picasso.get().load(art.artimage[2].imagesrc).into(itemArtRcBinding.imageArtId)
+            Picasso.get().load(art.artimage[0].imagesrc).into(itemArtRcBinding.imageArtId)
             itemArtRcBinding.textView.text = art.name
             itemArtRcBinding.textView.isVerticalScrollBarEnabled = true
             itemArtRcBinding.root.setOnClickListener {
